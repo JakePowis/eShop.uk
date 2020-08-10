@@ -9,6 +9,9 @@
         <div class="grid-container">
             <header class="header">
                 <div class="brand">
+                    <button class="burger" onclick="openMenu()">
+                        &#9776;
+                    </button>
                     <a href="index.html">eShop.uk</a>
                 </div>
                 <div class="header-links">
@@ -16,25 +19,100 @@
                     <a href="signin"> Sign In</a> 
                 </div>
             </header>
-            <!-- <aside>
-                shopping category
-            </aside> -->
+            <aside class="sidebar">
+                <h3>shopping category</h3>
+                <button class="sidebar-close-button" onclick="closeMenu()">x</button>
+                <ul>
+                    <li>League of Legends</li>
+                    <li>CS GO</li>
+                </ul>
+            </aside>
         
         <main class="main">
-            <ul>
-                <li>Product 1</li>
-                <li>Product 2</li>
-                <li>Product 3</li>
-                <li>Product 4</li>
-                <li>Product 5</li>
-                <li>Product 6</li>
-            </ul>
+            <div class="content">
+                <ul class="products">
+                    <li>
+                        <div class="product">
+                                <img class="product-image" src="images/fnaticshirt.jpg" alt="product" />
+                                <div class="product-name">
+                                  <a href="product.html">Fnatic 2019 Jersey</a>
+                                </div>
+                                <div class="product-brand">Fnatic - League of Legends</div>
+                                <div class="product-price">£60</div>
+                                <div class="product-rating">4.5 Stars (10 Reviews)</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                                <img class="product-image" src="images/fnaticshirt.jpg" alt="product" />
+                                <div class="product-name">
+                                  <a href="product.html">Fnatic 2019 Jersey</a>
+                                </div>
+                                <div class="product-brand">Fnatic - League of Legends</div>
+                                <div class="product-price">£60</div>
+                                <div class="product-rating">4.5 Stars (10 Reviews)</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                                <img class="product-image" src="images/fnaticshirt.jpg" alt="product" />
+                                <div class="product-name">
+                                  <a href="product.html">Fnatic 2019 Jersey</a>
+                                </div>
+                                <div class="product-brand">Fnatic - League of Legends</div>
+                                <div class="product-price">£60</div>
+                                <div class="product-rating">4.5 Stars (10 Reviews)</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                                <img class="product-image" src="images/fnaticshirt.jpg" alt="product" />
+                                <div class="product-name">
+                                  <a href="product.html">Fnatic 2019 Jersey</a>
+                                </div>
+                                <div class="product-brand">Fnatic - League of Legends</div>
+                                <div class="product-price">£60</div>
+                                <div class="product-rating">4.5 Stars (10 Reviews)</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                                <img class="product-image" src="images/fnaticshirt.jpg" alt="product" />
+                                <div class="product-name">
+                                  <a href="product.html">Fnatic 2019 Jersey</a>
+                                </div>
+                                <div class="product-brand">Fnatic - League of Legends</div>
+                                <div class="product-price">£60</div>
+                                <div class="product-rating">4.5 Stars (10 Reviews)</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                                <img class="product-image" src="images/fnaticshirt.jpg" alt="product" />
+                                <div class="product-name">
+                                  <a href="product.html">Fnatic 2019 Jersey</a>
+                                </div>
+                                <div class="product-brand">Fnatic - League of Legends</div>
+                                <div class="product-price">£60</div>
+                                <div class="product-rating">4.5 Stars (10 Reviews)</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </main>
 
         <footer class="footer">
             All rights reserved - eShop.uk
         </footer>
     </div>
+    <script>
+        function openMenu() {
+            document.querySelector(".sidebar").classList.add("open");
+        }
+        function closeMenu() {
+             document.querySelector(".sidebar").classList.remove("open")
+        }
+    </script>
 
     </body>
 </html>
