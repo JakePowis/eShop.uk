@@ -1,3 +1,9 @@
+/* add route 100% to continue chain in react only */
+#root {
+  height: 100%;
+}
+
+
 html {
     /* 62.5% makes 1rem 10px (as default is 16px font), so 5 rem is 50px etc and scales nicely */
 font-size: 62.5%;
@@ -70,7 +76,7 @@ a{
 
 .products {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     flex-wrap: wrap;
   }
