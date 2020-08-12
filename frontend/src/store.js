@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { productListReducer, productDetailsReducer } from './reducers/productReducers';
+import { cartReducer } from './reducers/cartReducers';
 
 //is this needed and del from function too?
 const initialState = [];
@@ -8,6 +9,7 @@ const initialState = [];
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
+    cart: cartReducer,
 
 })
 

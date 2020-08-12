@@ -2,7 +2,7 @@ import { PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_
 
 
 function productListReducer(state = { products: [] }, action) {
-    console.log("hitting reducers", action, state)
+    console.log("hitting reducers 1", action, state)
     switch (action.type) {
         case PRODUCT_LIST_REQUEST:
             return { loading: true, products: [] };
@@ -16,7 +16,7 @@ function productListReducer(state = { products: [] }, action) {
 }
 
 function productDetailsReducer(state = { product: {} }, action) {
-    console.log("hitting reducers", action, state)
+    console.log("hitting reducers 2", action, state)
     switch (action.type) {
         case PRODUCT_DETAILS_REQUEST:
             return { loading: true, product: [] };

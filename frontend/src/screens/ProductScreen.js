@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
 import { detailsProduct } from '../actions/productActions';
 
-export default function ProductScreen() {
+export default function ProductScreen(props) {
     console.log("TEST LOAD")
     let { _id } = useParams();
 
-
+    const [qty, setQty] = useState(1);
     const productDetails = useSelector(state => state.productDetails)
     const { product, loading, error } = productDetails;
     const dispatch = useDispatch();
@@ -21,6 +21,9 @@ export default function ProductScreen() {
         }
     }, [])
 
+    const handleAddToCart = () => {
+        props.history.push("/cart/" + _id + "?qty=" + qty)
+    }
 
     return (
         <div>
@@ -40,7 +43,7 @@ export default function ProductScreen() {
                                     <h4>{product.name}</h4>
                                 </li>
                                 <li>
-                                    {product.rating} Stars (product.numReviews) reviews)
+                                    {product.rating} Stars ({product.numReviews}) reviews)
                         </li>
                                 <li>
                                     <b>{product.price}</b>
@@ -60,21 +63,22 @@ export default function ProductScreen() {
                                     Price: {product.price}
                                 </li>
                                 <li>
-                                    Status: {product.status}
+                                    Status:{' '}
+                                    {product.countInStock > 0 ? 'In Stock' : 'Unavailable.'}
                                 </li>
                                 <li>
                                     <b>{product.price}</b>
                                 </li>
                                 <li>
-                                    Qty: <select>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
+                                    Qty: <select value={qty} onChange={(e) => setQty(e.target.value)}>
+                                        {[...Array(product.countInStock).keys()].map(x =>
+                                            <option key={x + 1} value={x + 1}>{x + 1}</option>)}
                                     </select>
                                 </li>
                                 <li>
-                                    <button className="button primary">Add to Cart</button>
+                                    {product.countInStock > 0 &&
+                                        <button onClick={handleAddToCart} className="button primary">Add to Cart</button>
+                                    }
                                 </li>
                             </ul>
 
@@ -86,3 +90,6 @@ export default function ProductScreen() {
         </div>
     )
 }
+
+
+

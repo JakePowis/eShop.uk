@@ -9,6 +9,7 @@ export default {
             brand: "Fnatic - Legaue of Legends",
             rating: 4.5,
             numReviews: 10,
+            countInStock: 6
         },
         {
             _id: "2",
@@ -19,6 +20,7 @@ export default {
             brand: "G2 - Legaue of Legends",
             rating: 4.4,
             numReviews: 12,
+            countInStock: 2
         },
         {
             _id: "3",
@@ -29,6 +31,7 @@ export default {
             brand: "Origin - Legaue of Legends",
             rating: 4.2,
             numReviews: 4,
+            countInStock: 7
         },
         {
             _id: "4",
@@ -39,6 +42,7 @@ export default {
             brand: "Misfits - Legaue of Legends",
             rating: 4.3,
             numReviews: 7,
+            countInStock: 0
         }
     ]
 }
