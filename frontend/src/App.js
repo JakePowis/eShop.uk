@@ -31,6 +31,7 @@ function App() {
             <a href="signin"> Sign In</a>
           </div>
         </header>
+
         <aside className="sidebar">
           <h3>shopping category</h3>
           <button className="sidebar-close-button" onClick={closeMenu}>x</button>
@@ -52,7 +53,7 @@ function App() {
 
         <footer className="footer">
           All rights reserved - eShop.uk
-</footer>
+        </footer>
 
       </div>
 
