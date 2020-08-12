@@ -8,7 +8,7 @@ import {
 } from '../constants/productConstants';
 import axios from 'axios';
 
-
+//load all products in DB
 const listProducts = () => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST });
@@ -19,7 +19,7 @@ const listProducts = () => async (dispatch) => {
     }
 };
 
-
+//load product that matches the product ID only
 const detailsProduct = (productId) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId })
