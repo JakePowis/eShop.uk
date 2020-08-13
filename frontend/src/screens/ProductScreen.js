@@ -81,10 +81,7 @@ export default function ProductScreen(props) {
                                     }
                                 </li>
                             </ul>
-
                         </div>
-
-
                     </div>
             }
         </div>

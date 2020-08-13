@@ -46,7 +46,7 @@ function App() {
         <main className="main">
           <div className="content">
 
-            <Route path="/products/:_id" component={ProductScreen} />
+            <Route path="/product/:_id" component={ProductScreen} />
             <Route path="/cart/:_id?" component={CartScreen} />
             <Route path="/" exact={true} component={HomeScreen} />
 
