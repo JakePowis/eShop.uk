@@ -43,7 +43,7 @@ export default function ProductScreen(props) {
                                     <h4>{product.name}</h4>
                                 </li>
                                 <li>
-                                    {product.rating} Stars ({product.numReviews}) reviews)
+                                    {product.rating} Stars ({product.numReviews ? product.numReviews : "0"} reviews)
                         </li>
                                 <li>
                                     <b>{product.price}</b>

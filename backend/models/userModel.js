@@ -9,6 +9,9 @@ const userSchema = new mongoose.Schema({
     isAdmin: { type: Boolean, required: true, default: false },
 });
 
+//db name: Users & db schema: userSchema being added to model so when its created
+//it goes to mongodb URL and creates db there.
+
 const userModel = mongoose.model('User', userSchema);
 
 export default userModel;

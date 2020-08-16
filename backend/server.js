@@ -4,6 +4,7 @@ import config from './config'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import userRoute from './routes/userRoute'
+import productRoute from './routes/productRoute'
 
 dotenv.config();
 
@@ -20,22 +21,12 @@ mongoose
 
 const app = express();
 
+//middleware
+app.use(express.json());
+
 app.use('/api/users', userRoute);
+app.use('/api/products', productRoute);
 
-//GET all products
-app.get("/api/products", (req, res) => {
-    res.send(data.products)
-})
 
-//GET product that matches ID only
-app.get("/api/products/:id", (req, res) => {
-    const productId = req.params.id;
-    const product = data.products.find(x => x._id === productId)
-    if (product) {
-        res.send(product)
-    } else {
-        res.status(404).send({ message: 'Product Not Found.' });
-    }
-})
 
 app.listen(5000, () => console.log("Server started at http://localhost:5000"))
