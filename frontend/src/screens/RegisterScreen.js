@@ -74,7 +74,7 @@ export default function SignInScreen(props) {
                     Already have an acount?
           </li>
                 <li>
-                    <Link to="/signin" className="button secondary text-center" >Log in</Link>
+                    <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Log in</Link>
                 </li>
             </ul>
         </form>
