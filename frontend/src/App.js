@@ -10,6 +10,8 @@ import RegisterScreen from './screens/RegisterScreen'
 import ProductsScreen from './screens/ProductsScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import OrderScreen from './screens/OrderScreen'
 
 function App() {
 
@@ -64,6 +66,8 @@ function App() {
             <Route path="/cart/:_id?" component={CartScreen} />
             <Route path="/shipping" component={ShippingScreen} />
             <Route path="/payment" component={PaymentScreen} />
+            <Route path="/placeorder" component={PlaceOrderScreen} />
+            <Route path="/orders/:_id" component={OrderScreen} />
             <Route path="/" exact={true} component={HomeScreen} />
 
           </div>
