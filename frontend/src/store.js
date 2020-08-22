@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { productListReducer, productDetailsReducer, productSaveReducer, productDeleteReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
 import { userSigninReducer, userRegisterReducer } from './reducers/userReducers';
-import { orderCreateReducer, orderDetailsReducer } from './reducers/orderReducers'
+import { orderCreateReducer, orderDetailsReducer, orderPayReducer } from './reducers/orderReducers';
 import Cookie from "js-cookie";
 
 //is this needed and del from function too?
@@ -26,6 +26,7 @@ const reducer = combineReducers({
     productDelete: productDeleteReducer,
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
+    orderPay: orderPayReducer
 
 })
 

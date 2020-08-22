@@ -1,20 +1,40 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { detailsOrder } from '../actions/orderActions';
-// import PaypalButton from '../components/PaypalButton';
+import { detailsOrder, payOrder } from '../actions/orderActions';
+import PaypalButton from '../components/PaypalButton';
+
+
+
 function OrderScreen(props) {
 
 
     const dispatch = useDispatch();
 
+    //get status of if prder paid
+    const orderPay = useSelector(state => state.orderPay);
+    const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
+
     useEffect(() => {
-        console.log("id to get", props.match.params._id)
-        dispatch(detailsOrder(props.match.params._id));
-    }, [])
+        if (successPay) {
+            props.history.push("/profile");
+        } else {
+            dispatch(detailsOrder(props.match.params._id));
+        }
+        return () => {
+        };
+    }, [successPay]);
+
+
 
     const orderDetails = useSelector(state => state.orderDetails);
     const { loading, order, error } = orderDetails;
+
+    const handleSuccessPayment = (paymentResult) => {
+        console.log("running success payment to update db & redux")
+        dispatch(payOrder(order, paymentResult));
+    }
+
 
     return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
 
@@ -29,7 +49,7 @@ function OrderScreen(props) {
                             {order.shipping.address}, {order.shipping.city},
           {order.shipping.postalCode}, {order.shipping.country},
           </div>
-                        <div>
+                        <div className="order-moreInfo">
                             {order.isDelivered ? "Delivered at " + order.deliveredAt : "Not Delivered."}
                         </div>
                     </div>
@@ -38,14 +58,14 @@ function OrderScreen(props) {
                         <div>
                             Payment Method: {order.payment.paymentMethod}
                         </div>
-                        <div>
+                        <div className="order-moreInfo">
                             {order.isPaid ? "Paid at " + order.paidAt : "Not Paid."}
                         </div>
                     </div>
                     <div>
                         <ul className="cart-list-container">
                             <li>
-                                <h3>Shopping Cart</h3>
+                                <h3> Order Details </h3>
                                 <div>Price</div>
                             </li>
                             {
@@ -84,12 +104,12 @@ function OrderScreen(props) {
                 <div className="placeorder-action">
                     <ul>
                         <li className="placeorder-actions-payment">
-                            {/* {loadingPay && <div>Finishing Payment...</div>}
+                            {loadingPay && <div>Finishing Payment...</div>}
                             {!order.isPaid &&
                                 <PaypalButton
                                     amount={order.totalPrice}
                                     onSuccess={handleSuccessPayment} />
-                            } */}
+                            }
                         </li>
                         <li>
                             <h3>Order Summary</h3>

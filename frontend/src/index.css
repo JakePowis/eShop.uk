@@ -404,3 +404,9 @@ tbody > tr:nth-child(odd) {
 .placeorder-actions-payment > div {
   width: 100%;
 }
+
+.order-moreInfo {
+
+  color:red;
+  margin: 1.6rem 0rem;
+}
