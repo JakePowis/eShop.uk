@@ -1,16 +1,37 @@
 import express from 'express';
 import Order from '../models/orderModel';
-import { getToken } from '../util';
 import { isAuth, isAdmin } from '../util'
 
 
 const router = express.Router();
 
+
+
+
 //GET ALL
 router.get("/", isAuth, async (req, res) => {
-    const orders = await Order.find({});
+    const orders = await Order.find({}).populate('user');
+    console.log("ORDERS WITH POPULATE USRS", orders)
     res.send(orders);
-})
+});
+
+//GET my order
+router.get("/mine", isAuth, async (req, res) => {
+    const orders = await Order.find({ user: req.user._id });
+    res.send(orders);
+});
+
+
+// DELETE by ID
+router.delete("/:id", isAuth, isAdmin, async (req, res) => {
+    const order = await Order.findOne({ _id: req.params.id });
+    if (order) {
+        const deletedOrder = await order.remove();
+        res.send(deletedOrder);
+    } else {
+        res.status(404).send("Order Not Found.")
+    }
+});
 
 
 //GET BY ID
@@ -41,6 +62,10 @@ router.post("/", isAuth, async (req, res) => {
     res.status(201).send({ message: "New Order Created", data: newOrderCreated });
 });
 
+
+
+
+//Update that order is paid
 router.put("/:id/pay", isAuth, async (req, res) => {
     console.log("update order to paid route hit")
     const order = await Order.findById(req.params.id);
