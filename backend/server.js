@@ -1,12 +1,10 @@
 import express from "express"
 import config from './config'
-import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import userRoute from './routes/userRoute'
 import productRoute from './routes/productRoute'
 import orderRoute from './routes/orderRoute'
 
-dotenv.config();
 
 const mongodbUrl = config.MONGODB_URL
 
@@ -32,5 +30,11 @@ app.get('/api/config/paypal', (req, res) => {
 });
 
 
+app.use(express.static(path.join(__dirname, '/../frontend/build')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
+});
 
-app.listen(5000, () => console.log("Server started at http://localhost:5000"))
+app.listen(config.PORT, () => {
+    console.log('Server started at http://localhost:5000');
+});
