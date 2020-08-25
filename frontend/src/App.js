@@ -63,11 +63,19 @@ function App() {
         <aside className="sidebar">
           <h3>shopping category</h3>
           <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-          <ul>
-            <li>League of Legends</li>
-            <li>CS GO</li>
+          <ul className="categories">
+            <li>
+              <Link to="/category/lol">League of Legends</Link>
+            </li>
+
+            <li>
+              <Link to="/category/csgo">Counter Strike: GO</Link>
+            </li>
           </ul>
         </aside>
+
+
+
 
 
         <main className="main">
@@ -83,6 +91,7 @@ function App() {
             <Route path="/order/:_id" component={OrderScreen} />
             <Route path="/orders" component={OrdersScreen} />
             <Route path="/profile" component={ProfileScreen} />
+            <Route path="/category/:id" component={HomeScreen} />
             <Route path="/" exact={true} component={HomeScreen} />
 
           </div>

@@ -8,10 +8,34 @@ const router = express.Router();
 
 
 //GET ALL
-router.get("/", async (req, res) => {
-    const products = await Product.find({});
+router.get('/', async (req, res) => {
+
+    //if category selected, add to Mongo search
+    const category = req.query.category ? { category: req.query.category } : {};
+
+    //if category keyword, add to Mongo search (within name field)
+    const searchKeyword = req.query.searchKeyword
+        ? {
+            name: {
+                $regex: req.query.searchKeyword,
+                $options: 'i',
+            },
+        }
+        : {};
+
+    //FIXME: results dont seem to be ordered correctly
+
+    //if order selected, sort Mongo results (by price)
+    const sortOrder = req.query.sortOrder
+        ? req.query.sortOrder === 'lowest'
+            ? { price: -1 }
+            : { price: 1 }
+        : { name: -1 };
+    const products = await Product.find({ ...category, ...searchKeyword }).sort(
+        sortOrder
+    );
     res.send(products);
-})
+});
 
 
 //GET BY ID

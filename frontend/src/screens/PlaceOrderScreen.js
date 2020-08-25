@@ -19,7 +19,7 @@ export default function PlaceOrderScreen(props) {
 
     useEffect(() => {
         if (success) {
-            props.history.push("/orders/" + order._id);
+            props.history.push("/order/" + order._id);
         }
 
     }, [success])

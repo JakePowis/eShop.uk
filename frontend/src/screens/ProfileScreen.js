@@ -107,7 +107,7 @@ export default function ProfileScreen(props) {
                                     <td>{order.totalPrice}</td>
                                     <td>{order.isPaid ? <span>paid at {order.paidAt}</span> : "not paid"}</td>
                                     <td>
-                                        <Link to={"/orders/" + order._id}>DETAILS</Link>
+                                        <Link to={"/order/" + order._id}>DETAILS</Link>
                                     </td>
                                 </tr>)}
                             </tbody>
