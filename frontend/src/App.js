@@ -34,13 +34,11 @@ function App() {
       <div className="grid-container">
         <header className="header">
           <div className="brand">
-            <button className="burger" onClick={openMenu}>
-              &#9776;
-            </button>
-            <Link to="/">eShop.uk</Link>
+            <button onClick={openMenu}>&#9776;</button>
+            <Link to="/">amazona</Link>
           </div>
           <div className="header-links">
-            <Link to="/cart">Cart</Link>
+            <a href="cart.html">Cart</a>
             {userInfo ? (
               <Link to="/profile">{userInfo.name}</Link>
             ) : (
