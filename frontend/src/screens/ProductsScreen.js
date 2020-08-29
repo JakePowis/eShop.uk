@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signin } from '../actions/userActions';
 import { saveProduct, listProducts, deleteProduct } from '../actions/productActions';
+import axios from 'axios'
 
 export default function ProductsScreen(props) {
 
@@ -14,6 +15,7 @@ export default function ProductsScreen(props) {
     const [countInStock, setCountInStock] = useState('');
     const [description, setDescription] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
+    const [uploading, setUploading] = useState(false);
 
     const productSave = useSelector(state => state.productSave);
     //TODO: use this in backtest app to get what you need?
@@ -68,6 +70,26 @@ export default function ProductsScreen(props) {
         setCountInStock(product.countInStock);
     }
 
+    const uploadFileHandler = (e) => {
+        const file = e.target.files[0];
+        const bodyFormData = new FormData();
+        bodyFormData.append('image', file);
+        setUploading(true);
+        axios.post('/api/uploads/s3', bodyFormData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+            .then((response) => {
+                setImage(response.data);
+                setUploading(false);
+            })
+            .catch((err) => {
+                console.log(err);
+                setUploading(false);
+            });
+    };
+
 
     return (
         <div className="content content-margined">
@@ -120,15 +142,8 @@ export default function ProductsScreen(props) {
                                     id="image"
                                     onChange={(e) => setImage(e.target.value)}
                                 ></input>
-                                {/* <input
-                                    type="text"
-                                    name="image"
-                                    value={image}
-                                    id="image"
-                                    onChange={(e) => setImage(e.target.value)}
-                                ></input>
                                 <input type="file" onChange={uploadFileHandler}></input>
-                                {uploading && <div>Uploading...</div>} */}
+                                {uploading && <div>Uploading...</div>}
                             </li>
                             <li>
                                 <label htmlFor="brand">Brand</label>

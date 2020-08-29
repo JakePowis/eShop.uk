@@ -1,9 +1,11 @@
 import express from "express"
+import path from 'path'
 import config from './config'
 import mongoose from 'mongoose'
 import userRoute from './routes/userRoute'
 import productRoute from './routes/productRoute'
 import orderRoute from './routes/orderRoute'
+import uploadRoute from './routes/uploadRoute'
 
 
 const mongodbUrl = config.MONGODB_URL
@@ -25,10 +27,15 @@ app.use(express.json());
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/orders', orderRoute);
+app.use('/api/uploads', uploadRoute)
+
+
 app.get('/api/config/paypal', (req, res) => {
     res.send(config.PAYPAL_CLIENT_ID);
 });
 
+//serve files from uplaod folder
+app.use('/uploads', express.static(path.join(__dirname, '/../uploads')));
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

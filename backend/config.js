@@ -6,5 +6,7 @@ export default {
     MONGODB_URL: process.env.MONGODB_URL || 'mongodb://localhost/eshop',
     JWT_SECRET: process.env.JWT_SECRET || 'anythingworks',
     PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID || 'sb',
-    PORT: process.env.PORT || 5000
+    PORT: process.env.PORT || 5000,
+    accessKeyId: process.env.accessKeyId || 'accessKeyId',
+    secretAccessKey: process.env.secretAccessKey || 'secretAccessKey',
 }
