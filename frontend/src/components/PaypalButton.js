@@ -16,6 +16,7 @@ export default function PaypalButton(props) {
         script.src = 'https://www.paypal.com/sdk/js?client-id=' + clientID;
         script.async = true;
         script.onload = () => {
+            console.log("sdk function paypal", script)
             setSdkReady(true);
         }
         document.body.appendChild(script);
@@ -54,7 +55,10 @@ export default function PaypalButton(props) {
 
     //on load, set up SDK
     useEffect(() => {
+
+        console.log("run paypal use effect 1")
         if (!window.paypal) {
+            console.log("run paypal use effect 2")
             addPayPalSdk();
         }
 
@@ -62,7 +66,7 @@ export default function PaypalButton(props) {
 
     //show loaidng while SDK setting up
     if (!SdkReady) {
-        return <div>Loading...</div>
+        return <div>Loading Paypal SDK...</div>
 
     }
     //TODO: look into this code for button and functions that feed in
