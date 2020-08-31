@@ -9,19 +9,25 @@ export default function PaypalButton(props) {
 
     //set up script for SDK once id back from server
     const addPayPalSdk = async () => {
-        const result = await axios.get("/api/config/paypal");
-        const clientID = result.data;
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://www.paypal.com/sdk/js?client-id=' + clientID;
-        script.async = true;
-        script.onload = () => {
+        try {
+            const result = await axios.get("/api/config/paypal");
+            console.log("result from fecth", result)
+            const clientID = result.data;
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://www.paypal.com/sdk/js?client-id=' + clientID;
+            script.async = true;
+            script.onload = () => {
 
-            setSdkReady(true);
+                setSdkReady(true);
 
-            console.log("sdk function paypal", script, "sdk ready: ", SdkReady)
+                console.log("sdk function paypal", script, "sdk ready: ", SdkReady)
+            }
+            document.body.appendChild(script);
         }
-        document.body.appendChild(script);
+        catch (error) {
+            console.log("error from paypal SDK: ", error)
+        }
     }
 
     //TODO: create order code goes into paypal button, to give paypal the details of order (price, currency etc).
