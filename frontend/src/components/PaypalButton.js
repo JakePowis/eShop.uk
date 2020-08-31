@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default function PaypalButton(props) {
 
-    const [SdkReady, setSdkReady] = useState("")
+    const [SdkReady, setSdkReady] = useState(false)
 
 
     //set up script for SDK once id back from server
@@ -16,8 +16,10 @@ export default function PaypalButton(props) {
         script.src = 'https://www.paypal.com/sdk/js?client-id=' + clientID;
         script.async = true;
         script.onload = () => {
-            console.log("sdk function paypal", script)
+
             setSdkReady(true);
+
+            console.log("sdk function paypal", script, "sdk ready: ", SdkReady)
         }
         document.body.appendChild(script);
     }
