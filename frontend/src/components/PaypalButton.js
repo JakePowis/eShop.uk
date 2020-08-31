@@ -65,10 +65,10 @@ export default function PaypalButton(props) {
     useEffect(() => {
 
         console.log("run paypal use effect 1")
-        if (!window.paypal) {
-            console.log("run paypal use effect 2")
-            addPayPalSdk();
-        }
+        // if (!window.paypal) {
+        console.log("run paypal use effect 2")
+        addPayPalSdk();
+        // }
 
     }, [])
 
