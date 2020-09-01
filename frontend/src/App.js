@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
@@ -14,8 +14,15 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen'
 import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OrdersScreen';
+import { listProducts } from './actions/productActions'
+import WelcomeScreen from './screens/WelcomeScreen';
 
-function App() {
+function App(props) {
+
+  const dispatch = useDispatch();
+  const [category, setCategory] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [sortOrder, setSortOrder] = useState('');
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -28,6 +35,18 @@ function App() {
     document.querySelector(".sidebar").classList.remove("open")
   }
 
+  const cart = useSelector(state => state.cart);
+  const { cartItems } = cart;
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(listProducts(category, searchKeyword, sortOrder));
+  };
+
+  console.log("cat is ", category)
+
+
+
   return (
     <BrowserRouter>
 
@@ -39,10 +58,28 @@ function App() {
             </button>
             <Link to="/">eShop.uk</Link>
           </div>
+
+          <div class="">
+            <form class="searchBar" onSubmit={submitHandler}>
+              <select class="searchCat" onChange={(e) => setCategory(e.target.value)}>
+                <option value="">All</option>
+                <option value="lol">Legue of Legends</option>
+                <option value="csgo">Counter Strike</option>
+              </select>
+              <input
+                class="searchText"
+                name="searchKeyword"
+                onChange={(e) => setSearchKeyword(e.target.value)}
+              />
+              <button class="searchButton" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+          </div>
+
+
           <div className="header-links">
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart"><i style={{ fontSize: "2.5rem" }} class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="items">{cartItems.length}</span> <span >Basket</span></Link>
             {userInfo ? (
-              <Link to="/profile">{userInfo.name}</Link>
+              <Link to="/profile"><i></i>Hello, {userInfo.name.split(" ")[0]}</Link>
             ) : (
                 <Link to="/signin">Sign In</Link>
               )}
@@ -61,7 +98,15 @@ function App() {
         </header>
 
         <aside className="sidebar">
-          <h3>shopping category</h3>
+          <div class="welcome">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            {userInfo ? (
+              <Link to="/profile"><i></i>Hello, {userInfo.name.split(" ")[0]}</Link>
+            ) : (
+                <Link to="/signin">Sign In</Link>
+              )}
+          </div>
+          <h3>Categories</h3>
           <button className="sidebar-close-button" onClick={closeMenu}>x</button>
           <ul className="categories">
             <li>
@@ -92,7 +137,8 @@ function App() {
             <Route path="/orders" component={OrdersScreen} />
             <Route path="/profile" component={ProfileScreen} />
             <Route path="/category/:id" component={HomeScreen} />
-            <Route path="/" exact={true} component={HomeScreen} />
+            <Route path="/shop" component={HomeScreen} />
+            <Route path="/" exact={true} component={WelcomeScreen} />
 
           </div>
         </main>

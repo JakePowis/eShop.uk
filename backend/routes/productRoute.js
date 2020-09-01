@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
         ? req.query.sortOrder === 'lowest'
             ? { price: -1 }
             : { price: 1 }
-        : { name: -1 };
+        : { name: 1 };
     const products = await Product.find({ ...category, ...searchKeyword }).sort(
         sortOrder
     );
