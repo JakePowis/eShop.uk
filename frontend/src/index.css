@@ -176,10 +176,10 @@ button:focus {
   border-bottom: 1px solid lightgrey;
   box-shadow: 1px 2px 2px 1px #8888883b;
   width: 100%;
-  height: 3rem;
+  height: 3.8rem;
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
   
 
@@ -194,8 +194,6 @@ button:focus {
 width: 20%;
 display: flex;
 flex-direction: row;
-
-border-right: 1px darkslategray solid;
 margin-top: 1rem;
 
 }
@@ -221,7 +219,7 @@ margin-top: 1rem;
   padding: 0;
   flex: 0 1 28rem;
   margin: 1rem;
-  height: 30rem;
+  height: 25rem;
   border-bottom: .1rem #c0c0c0 solid;
   width: 100%;
 }
@@ -266,8 +264,8 @@ margin-top: 1rem;
   padding: 1rem 0rem;
 }
 .product-image{
-  max-width: 28rem;
-  max-height: 28rem;
+  max-width: 24rem;
+  max-height: 24rem;
 }
 .product-rating{
   margin-bottom: 1rem;
@@ -299,13 +297,26 @@ margin-top: 1rem;
   height: 100%;
 }
 
-.sidebar > .welcome {
+/* .sidebar > .welcomeContainer {
 
   background-color: #203040;
   height: 8rem;
   color: white;
   font-size: 3rem;
   text-align: center;
+} */
+
+.sidebar > .welcome {
+
+  background-color: #203040;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8rem;
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+  padding: 1rem;
 }
 
 .sidebar > .welcome > a {
@@ -313,6 +324,14 @@ margin-top: 1rem;
   color: white;
   font-size: 3rem;
   text-align: center;
+  padding: 1rem;
+  margin-right:1.5rem;
+  margin-top:2.5rem;
+}
+
+.sidebar > .welcome > i{
+
+  margin-top:1.8rem;
 }
 
 .sidebar.open{
@@ -625,11 +644,12 @@ tbody > tr:nth-child(odd) {
 .filter input,
 .filter button,
 .filter select {
-  padding: 1rem;
-  margin: 1rem;
+  padding: 0.3rem;
+  margin: 0.5rem;
   border-radius: 0.5rem;
   border: 0.1rem #c0c0c0 solid;
   font-size: 1.6rem;
+  /* height: 1.5rem; */
 }
 .categories {
   padding: 0;
@@ -674,12 +694,39 @@ a > .rating > span:last-child {
 
 /* Welcopme Screen */
 
+.greyBackground {
+
+  background-color: lightgrey;
+  height: 100rem;
+}
+
 .welcomeScreen {
  width: 98%;
- height: 70rem;
+ height: 60rem;
  margin: auto;
  background: #F2994A;  /* fallback for old browsers */
  background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
  background: linear-gradient(to right, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
+
+.welcomeTitle {
+  font-size: 6rem;
+  text-align: center;
+ padding: 5rem 2rem;
+}
+
+.productRecs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  }
+
+  .productRecs > div {
+
+    height: 50rem;
+    width: 50rem;
+    background-color: white;
+
+    }

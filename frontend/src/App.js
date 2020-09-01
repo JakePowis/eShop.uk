@@ -71,7 +71,9 @@ function App(props) {
                 name="searchKeyword"
                 onChange={(e) => setSearchKeyword(e.target.value)}
               />
+              {/* <Link to="/shop"> */}
               <button class="searchButton" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+              {/* </Link> */}
             </form>
           </div>
 
@@ -98,6 +100,7 @@ function App(props) {
         </header>
 
         <aside className="sidebar">
+
           <div class="welcome">
             <i class="fa fa-user" aria-hidden="true"></i>
             {userInfo ? (
@@ -105,6 +108,7 @@ function App(props) {
             ) : (
                 <Link to="/signin">Sign In</Link>
               )}
+
           </div>
           <h3>Categories</h3>
           <button className="sidebar-close-button" onClick={closeMenu}>x</button>
@@ -117,6 +121,32 @@ function App(props) {
               <Link to="/category/csgo">Counter Strike: GO</Link>
             </li>
           </ul>
+
+          <h3>Sale</h3>
+          <ul className="categories">
+            <li>
+              <Link to="/sale">Sale Items</Link>
+            </li>
+          </ul>
+
+
+          <h3>Account</h3>
+
+          <ul className="categories">
+            <li>
+              <Link to="/customerservice">Customer Services</Link>
+            </li>
+
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <Link to="/signout">Sign Out</Link>
+            </li>
+          </ul>
+
+
+
         </aside>
 
 

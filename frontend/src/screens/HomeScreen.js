@@ -6,6 +6,8 @@ import { Rating } from '../components/Rating';
 
 
 export default function HomeScreen(props) {
+    console.log("props are", props)
+
 
     const productList = useSelector((state) => state.productList);
     const { products, loading, error } = productList;
@@ -34,9 +36,10 @@ export default function HomeScreen(props) {
     return (
         <div className="shopPage">
             <div className="shopResults">
-                <div><span ><b>{products.length}</b></span> results found {category && <span>in category <span style={{ color: "orange" }}><b>{category}</b></span></span>}</div>
-            </div>
-            <div className="leftSide">
+                <div><span ><b>{products.length}</b></span> results found
+                    {category && <span>in category <span style={{ color: "orange" }}><b>"{category}"</b></span></span>}
+                    {searchKeyword && <span>for <span style={{ color: "orange" }}><b>"{searchKeyword}"</b></span></span>}
+                </div>
                 <ul className="filter">
                     <li>
                         Sort By{' '}
@@ -47,6 +50,8 @@ export default function HomeScreen(props) {
                         </select>
                     </li>
                 </ul>
+            </div>
+            <div className="leftSide">
             </div>
 
             <div className="rightSide">
@@ -81,6 +86,6 @@ export default function HomeScreen(props) {
                             </ul>
                             : <div>nothing</div>}
             </div>
-        </div>
+        </div >
     )
 }
