@@ -45,7 +45,7 @@ export default function CartScreen(props) {
         <div className="cart-list">
             <ul className="cart-list-container">
                 <li>
-                    <h3>Shopping Cart</h3>
+                    <h1>Shopping Cart</h1>
                     <div>Price</div>
                 </li>
                 {
@@ -75,7 +75,7 @@ export default function CartScreen(props) {
                                     </div>
                                 </div>
                                 <div className="cart-price">
-                                    ${item.price}
+                                    £{item.price}
                                 </div>
                             </li>
                         )
@@ -86,7 +86,7 @@ export default function CartScreen(props) {
         <div className="cart-action">
             <h3>
                 Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items):
-                ${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+                £{cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
             </h3>
             <button onClick={checkoutHandler} className="button primary full-width" disabled={cartItems.length === 0}>
                 Proceed to Checkout

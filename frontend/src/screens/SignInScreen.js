@@ -59,10 +59,10 @@ export default function SignInScreen(props) {
                     <button type="submit" className="button primary">Signin</button>
                 </li>
                 <li>
-                    New to eShop.uk?
+                    New to bookStore.co.uk?
           </li>
                 <li>
-                    <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect}  className="button secondary text-center" >Create your eShop.uk account</Link>
+                    <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your bookStore.co.uk account</Link>
                 </li>
             </ul>
         </form>

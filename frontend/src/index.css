@@ -54,6 +54,11 @@ button {
   font-size: 3.5rem;
   font-weight: bold;
   text-decoration: none;
+
+}
+
+.brand {
+  margin-top: 0.6rem;
 }
 
 
@@ -291,10 +296,20 @@ margin-top: 1rem;
 .sidebar{
   position: fixed;
   transition: all 0.5s;
-  transform: translateX(-30rem);
-  width: 30rem;
+  transform: translateX(-35rem);
+  width: 35rem;
   background-color: #f0f0f0;
   height: 100%;
+}
+
+.sidebar-cats {
+  /* padding-left: 2rem; */
+
+}
+ .sidebar-cats > h3 {
+  margin-top: 4rem;
+  margin-bottom: 0rem;
+  padding-left: 2rem;
 }
 
 /* .sidebar > .welcomeContainer {
@@ -652,12 +667,12 @@ tbody > tr:nth-child(odd) {
   /* height: 1.5rem; */
 }
 .categories {
-  padding: 0;
+  padding: 0rem;
   list-style-type: none;
 }
 .categories a {
   display: flex;
-  padding: 1rem;
+  padding: 1rem 3rem;
 }
 
 .categories a:hover {
@@ -717,30 +732,56 @@ a > .rating > span:last-child {
  font-weight: 600;;
 }
 
+.catTitle {
+  font-size: 2rem;
+  text-align: left;
+ padding: 2rem 2rem 0rem 2rem;
+ font-weight: 600;;
+}
+
 .welcomeHeader {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  height: 35rem;
+  min-height: 38rem;
   color: white;
   font-size: 2rem;
   justify-content: center;
   align-items: center
 }
 
-.welcomeHeader > div {
-
-  width: 20%;
-  border: solid white 1px;
+.welcomeContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 60%;
 }
 
-.welcomeHeader > div > div{
+.welcomeText {
 
-  font-size: 3rem;
+  width: 40%;
+  /* border: solid white 1px; */
+  font-size: 2.5rem;
+  margin: 0rem;
+  padding: 2rem 0rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.welcomeText >  div{
+
+  font-size: 4rem;
   font-weight: 600rem;
   margin: 1rem 0rem;
+  text-align: left;
+
+
 }
+
 
 .productRecs {
   display: flex;

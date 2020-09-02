@@ -77,8 +77,10 @@ function App(props) {
               <form class="searchBar" onSubmit={submitHandler}>
                 <select class="searchCat" value={category} onChange={(e) => setCategory(e.target.value)}>
                   <option value="">All</option>
-                  <option value="lol">Legue of Legends</option>
-                  <option value="csgo">Counter Strike</option>
+                  <option value="fantasy">Fantasy</option>
+                  <option value="romance">Romance</option>
+                  <option value="crime">Crime</option>
+                  <option value="nonfiction">Non-Fiction</option>
                 </select>
                 <input
                   class="searchText"
@@ -124,49 +126,51 @@ function App(props) {
               )}
 
           </div>
-          <h3>Categories</h3>
-          <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-          <ul className="categories">
-            <li>
-              <Link to="/shop">All</Link>
-            </li>
-            <li>
-              <Link to="/category/fantasy">Fantasy</Link>
-            </li>
+          <div className="sidebar-cats">
+            <h3>Categories</h3>
+            <button className="sidebar-close-button" onClick={closeMenu}>x</button>
+            <ul className="categories">
+              <li>
+                <Link to="/shop">All</Link>
+              </li>
+              <li>
+                <Link to="/category/fantasy">Fantasy</Link>
+              </li>
 
-            <li>
-              <Link to="/category/crime">Crime</Link>
-            </li>
-            <li>
-              <Link to="/category/romance">Romance</Link>
-            </li>
-            <li>
-              <Link to="/category/nonfiction">Non-fiction</Link>
-            </li>
-          </ul>
+              <li>
+                <Link to="/category/crime">Crime</Link>
+              </li>
+              <li>
+                <Link to="/category/romance">Romance</Link>
+              </li>
+              <li>
+                <Link to="/category/nonfiction">Non-fiction</Link>
+              </li>
+            </ul>
 
-          <h3>Sale</h3>
-          <ul className="categories">
-            <li>
-              <Link to="/sale">Sale Items</Link>
-            </li>
-          </ul>
+            <h3>Sale</h3>
+            <ul className="categories">
+              <li>
+                <Link to="/sale">Sale Items</Link>
+              </li>
+            </ul>
 
 
-          <h3>Account</h3>
+            <h3>Account</h3>
 
-          <ul className="categories">
-            <li>
-              <Link to="/customerservice">Customer Services</Link>
-            </li>
+            <ul className="categories">
+              <li>
+                <Link to="/customerservice">Customer Services</Link>
+              </li>
 
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link to="/profile">Sign Out</Link>
-            </li>
-          </ul>
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+              <li>
+                <Link to="/profile">Sign Out</Link>
+              </li>
+            </ul>
+          </div>
 
 
 
@@ -206,9 +210,9 @@ function App(props) {
           All rights reserved - bookStore.co.uk
         </footer>
 
-      </div>
+      </div >
 
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 

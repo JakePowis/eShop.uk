@@ -49,7 +49,7 @@ export default function ProfileScreen(props) {
                 <form onSubmit={submitHandler} >
                     <ul className="form-container">
                         <li>
-                            <h2>User Profile</h2>
+                            <h2>Update User Profile</h2>
                         </li>
                         <li>
                             {loading && <div>Loading...</div>}
@@ -88,6 +88,7 @@ export default function ProfileScreen(props) {
             </div>
         </div>
         <div className="profile-orders content-margined">
+            <h1>My Orders</h1>
             {
                 loadingOrders ? <div>Loading...</div> :
                     errorOrders ? <div>{errorOrders} </div> :

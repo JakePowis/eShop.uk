@@ -83,7 +83,7 @@ export default function ProductScreen(props) {
                                             </a>
                                         </li>
                                         <li>
-                                            Price: <b>${product.price}</b>
+                                            Price: <b>£{product.price}</b>
                                         </li>
                                         <li>
                                             Description:
@@ -93,7 +93,7 @@ export default function ProductScreen(props) {
                                 </div>
                                 <div className="details-action">
                                     <ul>
-                                        <li>Price: ${product.price}</li>
+                                        <li>Price: £{product.price}</li>
                                         <li>
                                             Status:{' '}
                                             {product.countInStock > 0 ? 'In Stock' : 'Unavailable.'}

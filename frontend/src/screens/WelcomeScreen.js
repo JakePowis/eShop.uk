@@ -14,9 +14,10 @@ export default function WelcomeScreen(props) {
             <div class="welcomeScreen">
 
                 <div className="welcomeHeader">
-                    <div>  enjoy the best books at the cheapest prices<div>only at bookStore</div></div>
-                    <div> <img scr={require('../images/book2.png')} alt="books" /></div>
-
+                    <div className="welcomeContent">
+                        <div className="welcomeText">  enjoy the best books at the cheapest prices<div>only at bookStore</div></div>
+                        <div> <img style={{ width: "400px", height: "220px" }} src={bookImage} alt="books" /></div>
+                    </div>
                 </div>
                 <div className="productRecs">
                     <div className="welcomeTitle">Todays Deals</div>
@@ -24,7 +25,7 @@ export default function WelcomeScreen(props) {
                     <div className="welcomeTitle">New this week</div>
                 </div>
                 <div className="welcomeCat">
-                    <div className="welcomeTitle">Top Categories</div>
+                    <div className="catTitle">Top Categories</div>
                     <div className="cats">
                         <Link to="/shop"> <div className="catLink"> All </div></Link>
                         <Link to="/category/fantasy"><div className="catLink">Fantasy</div></Link>

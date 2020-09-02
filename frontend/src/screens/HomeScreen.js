@@ -77,7 +77,7 @@ export default function HomeScreen(props) {
                                                         text={product.numReviews + ' reviews'}
                                                     /></div>
 
-                                                    <div className="product-price">${product.price}</div>
+                                                    <div className="product-price">£{product.price}</div>
 
 
                                                 </div>
