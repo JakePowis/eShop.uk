@@ -32,6 +32,7 @@ export default function ProfileScreen(props) {
     const { loading: loadingOrders, orders, error: errorOrders } = myOrderList;
 
     useEffect(() => {
+        props.setShopScreen(false)
         if (userInfo) {
             console.log(userInfo.name)
             setEmail(userInfo.email);

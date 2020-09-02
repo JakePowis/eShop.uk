@@ -51,7 +51,7 @@ button {
 
 .brand a {
   color: #ffffff;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: bold;
   text-decoration: none;
 }
@@ -701,8 +701,8 @@ a > .rating > span:last-child {
 }
 
 .welcomeScreen {
- width: 98%;
- height: 60rem;
+ width: 85%;
+ height: 100%;
  margin: auto;
  background: #F2994A;  /* fallback for old browsers */
  background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
@@ -711,22 +711,94 @@ a > .rating > span:last-child {
 }
 
 .welcomeTitle {
-  font-size: 6rem;
-  text-align: center;
- padding: 5rem 2rem;
+  font-size: 2rem;
+  text-align: left;
+ padding: 2rem 2rem;
+ font-weight: 600;;
+}
+
+.welcomeHeader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 35rem;
+  color: white;
+  font-size: 2rem;
+  justify-content: center;
+  align-items: center
+}
+
+.welcomeHeader > div {
+
+  width: 20%;
+  border: solid white 1px;
+}
+
+.welcomeHeader > div > div{
+
+  font-size: 3rem;
+  font-weight: 600rem;
+  margin: 1rem 0rem;
 }
 
 .productRecs {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   width: 100%;
+
   }
 
   .productRecs > div {
 
-    height: 50rem;
-    width: 50rem;
+    height: 35rem;
+    width: 35rem;
     background-color: white;
+    padding: 2rem;
+    margin: 2rem;
+    flex: 1 2;
 
+    }
+
+    .welcomeCat {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex: 1 0 auto;
+      background-color: white;
+      min-height: 20rem;
+      width: 98%;
+      margin: auto;
+      /* overflow: auto; */
+    }
+
+    .cats {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      width: 100%;
+   
+    }
+
+    .catLink {
+     background:  #203040ea;
+      width: 25rem;
+      height: 10rem;
+      color: white;
+      font-weight: 800;
+      font-size: 2rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .catLink:hover {
+     background: rgba(0, 0, 0, 0.795);
     }

@@ -33,8 +33,11 @@ export default function CartScreen(props) {
 
     //add the params id & quantity to cart on load
     useEffect(() => {
+        props.setShopScreen(false)
         if (productId) {
             dispatch(addToCart(productId, qty))
+
+
         }
     }, [])
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,10 +19,15 @@ import WelcomeScreen from './screens/WelcomeScreen';
 
 function App(props) {
 
+
+
   const dispatch = useDispatch();
   const [category, setCategory] = useState('');
-  const [searchKeyword, setSearchKeyword] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState("");
   const [sortOrder, setSortOrder] = useState('');
+  const [shopScreen, setShopScreen] = useState(false);
+
+  console.log("searchKeyword is", searchKeyword)
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -41,9 +46,17 @@ function App(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(listProducts(category, searchKeyword, sortOrder));
+    console.log("DISpATCHED 11111", category, searchKeyword, sortOrder)
+
+
   };
 
   console.log("cat is ", category)
+
+  useEffect(() => {
+    setShopScreen(false)
+
+  }, [userInfo])
 
 
 
@@ -56,25 +69,26 @@ function App(props) {
             <button className="burger" onClick={openMenu}>
               &#9776;
             </button>
-            <Link to="/">eShop.uk</Link>
+            <Link to="/">bookStore<span style={{ fontSize: "1.5rem", color: "orange" }}>.co.uk</span></Link>
           </div>
 
           <div class="">
-            <form class="searchBar" onSubmit={submitHandler}>
-              <select class="searchCat" onChange={(e) => setCategory(e.target.value)}>
-                <option value="">All</option>
-                <option value="lol">Legue of Legends</option>
-                <option value="csgo">Counter Strike</option>
-              </select>
-              <input
-                class="searchText"
-                name="searchKeyword"
-                onChange={(e) => setSearchKeyword(e.target.value)}
-              />
-              {/* <Link to="/shop"> */}
-              <button class="searchButton" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-              {/* </Link> */}
-            </form>
+            {shopScreen ?
+              <form class="searchBar" onSubmit={submitHandler}>
+                <select class="searchCat" value={category} onChange={(e) => setCategory(e.target.value)}>
+                  <option value="">All</option>
+                  <option value="lol">Legue of Legends</option>
+                  <option value="csgo">Counter Strike</option>
+                </select>
+                <input
+                  class="searchText"
+                  name="searchKeyword"
+                  onChange={(e) => setSearchKeyword(e.target.value)}
+                />
+                <button class="searchButton" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+              </form>
+              : null}
           </div>
 
 
@@ -114,11 +128,20 @@ function App(props) {
           <button className="sidebar-close-button" onClick={closeMenu}>x</button>
           <ul className="categories">
             <li>
-              <Link to="/category/lol">League of Legends</Link>
+              <Link to="/shop">All</Link>
+            </li>
+            <li>
+              <Link to="/category/fantasy">Fantasy</Link>
             </li>
 
             <li>
-              <Link to="/category/csgo">Counter Strike: GO</Link>
+              <Link to="/category/crime">Crime</Link>
+            </li>
+            <li>
+              <Link to="/category/romance">Romance</Link>
+            </li>
+            <li>
+              <Link to="/category/nonfiction">Non-fiction</Link>
             </li>
           </ul>
 
@@ -141,7 +164,7 @@ function App(props) {
               <Link to="/profile">Profile</Link>
             </li>
             <li>
-              <Link to="/signout">Sign Out</Link>
+              <Link to="/profile">Sign Out</Link>
             </li>
           </ul>
 
@@ -155,26 +178,32 @@ function App(props) {
 
         <main className="main">
           <div className="content">
-            <Route path="/signin" component={SignInScreen} />
-            <Route path="/register" component={RegisterScreen} />
-            <Route path="/product/:_id" component={ProductScreen} />
-            <Route path="/products" component={ProductsScreen} />
-            <Route path="/cart/:_id?" component={CartScreen} />
-            <Route path="/shipping" component={ShippingScreen} />
-            <Route path="/payment" component={PaymentScreen} />
-            <Route path="/placeorder" component={PlaceOrderScreen} />
-            <Route path="/order/:_id" component={OrderScreen} />
-            <Route path="/orders" component={OrdersScreen} />
-            <Route path="/profile" component={ProfileScreen} />
-            <Route path="/category/:id" component={HomeScreen} />
-            <Route path="/shop" component={HomeScreen} />
-            <Route path="/" exact={true} component={WelcomeScreen} />
+
+            <>
+              <Route path="/signin" component={SignInScreen} />
+              <Route path="/register" component={RegisterScreen} />
+              <Route path="/product/:_id" component={ProductScreen} />
+              <Route path="/products" component={ProductsScreen} />
+              <Route path="/cart/:_id?" render={(props) => <CartScreen {...props} setShopScreen={setShopScreen} />} />
+              <Route path="/shipping" component={ShippingScreen} />
+              <Route path="/payment" component={PaymentScreen} />
+              <Route path="/placeorder" component={PlaceOrderScreen} />
+              <Route path="/order/:_id" component={OrderScreen} />
+              <Route path="/orders" component={OrdersScreen} />
+              <Route path="/profile" render={(props) => <ProfileScreen {...props} setShopScreen={setShopScreen} />} />
+              {/* <Route path="/category/:id" component={HomeScreen} /> */}
+              <Route path="/category/:id" render={(props) => <HomeScreen {...props} setShopScreen={setShopScreen} />} />
+              {/* <Route path="/shop" component={HomeScreen} /> */}
+              <Route path="/shop" render={(props) => <HomeScreen {...props} setShopScreen={setShopScreen} />} />
+              <Route path="/" exact={true} render={(props) => <WelcomeScreen  {...props} setShopScreen={setShopScreen} />} />
+            </>
+
 
           </div>
         </main>
 
         <footer className="footer">
-          All rights reserved - eShop.uk
+          All rights reserved - bookStore.co.uk
         </footer>
 
       </div>

@@ -6,7 +6,7 @@ import { Rating } from '../components/Rating';
 
 
 export default function HomeScreen(props) {
-    console.log("props are", props)
+    console.log("HOME SCREEN HIT, props are", props, "cat is", props.category)
 
 
     const productList = useSelector((state) => state.productList);
@@ -14,9 +14,9 @@ export default function HomeScreen(props) {
     const dispatch = useDispatch();
     console.log("state is :", productList)
 
-    const [searchKeyword, setSearchKeyword] = useState('');
+    const [searchKeyword, setSearchKeyword] = useState("");
     const [sortOrder, setSortOrder] = useState('');
-    const category = props.match.params.id ? props.match.params.id : '';
+    const category = props.match.params.id ? props.match.params.id : "";
 
 
     const sortHandler = (e) => {
@@ -28,6 +28,7 @@ export default function HomeScreen(props) {
     useEffect(() => {
 
         dispatch(listProducts(category))
+        props.setShopScreen(true)
 
         return () => {
         }
@@ -37,8 +38,8 @@ export default function HomeScreen(props) {
         <div className="shopPage">
             <div className="shopResults">
                 <div><span ><b>{products.length}</b></span> results found
-                    {category && <span>in category <span style={{ color: "orange" }}><b>"{category}"</b></span></span>}
-                    {searchKeyword && <span>for <span style={{ color: "orange" }}><b>"{searchKeyword}"</b></span></span>}
+                    {category && <span> in category <span style={{ color: "orange" }}><b>"{category}"</b></span></span>}
+                    {searchKeyword && <span> for <span style={{ color: "orange" }}><b>"{searchKeyword}"</b></span></span>}
                 </div>
                 <ul className="filter">
                     <li>
@@ -86,6 +87,6 @@ export default function HomeScreen(props) {
                             </ul>
                             : <div>nothing</div>}
             </div>
-        </div >
+        </div>
     )
 }
