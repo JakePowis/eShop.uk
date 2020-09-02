@@ -35,8 +35,6 @@ aws.config.update({
 
 const s3 = new aws.S3();
 
-console.log("AWS creds", config.accessKeyId, config.secretAccessKey)
-
 
 //set up storage
 const storageS3 = multerS3({
