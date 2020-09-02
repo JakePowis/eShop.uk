@@ -26,12 +26,12 @@ export default function WelcomeScreen(props) {
                 </div>
                 <div className="productRecs">
                     <div className="welcomeTitle">Todays Deals
-                    <Link to="product/"><img className="recImg" src={dealImage} alt="deal" />
+                    <Link to="product/5f4ff612da76f40004ddad18"><img className="recImg" src={dealImage} alt="deal" />
                         </Link></div>
                     <div className="welcomeTitle">Best Seller
-                    <Link to="product/"> <img className="recImg" src={bestImage} alt="best" /> </Link></div>
+                    <Link to="product/5f4ff5bada76f40004ddad17"> <img className="recImg" src={bestImage} alt="best" /> </Link></div>
                     <div className="welcomeTitle">New this week
-                    <Link to="product/"><img className="recImg" src={newImage} alt="new" /></Link></div>
+                    <Link to="product/5f4ff56bda76f40004ddad16"><img className="recImg" src={newImage} alt="new" /></Link></div>
                 </div>
                 <div className="welcomeCat">
                     <div className="catTitle">Top Categories</div>
