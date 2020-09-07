@@ -67,7 +67,7 @@ export default function ProductScreen(props) {
                         <div>
                             <div className="details">
                                 <div className="details-image">
-                                    <img src={product.image} alt="product"></img>
+                                    <img style={{ height: "400px", width: "280px" }} src={product.image} alt="product"></img>
                                 </div>
                                 <div className="details-info">
                                     <ul>
